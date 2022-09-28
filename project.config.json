@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "collection",
+  "projectname": "rmrk-front",
   "description": "rmrk-front",
   "appid": "touristappid",
   "setting": {
