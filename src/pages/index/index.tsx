@@ -12,12 +12,11 @@ import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import {
   decrement,
   increment,
-  incrementByAmount,
   incrementAsync,
-  incrementIfOdd,
   selectCount,
   selectStatus,
 } from '../../reducers/counter';
+import { set_current_account } from 'src/reducers/substrate';
 
 function Index () {
   const count = useAppSelector(selectCount);

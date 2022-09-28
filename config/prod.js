@@ -3,6 +3,8 @@ module.exports = {
     NODE_ENV: '"production"'
   },
   defineConstants: {
+    PROVIDER_SOCKET: '"wss://dev-node.substrate.dev"',
+    DEVELOPMENT_KEYRING: false
   },
   mini: {},
   h5: {
@@ -17,7 +19,6 @@ module.exports = {
     //    */
     //   chain.plugin('analyzer')
     //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
-
     //   /**
     //    * 如果 h5 端首屏加载时间过长，可以使用 prerender-spa-plugin 插件预加载首页。
     //    * @docs https://github.com/chrisvfritz/prerender-spa-plugin
@@ -34,4 +35,4 @@ module.exports = {
     //     }))
     // }
   }
-}
+};

@@ -1,26 +1,31 @@
-import { Component, PropsWithChildren } from 'react'
-import { Provider } from 'react-redux'
 
+import React, { useEffect } from 'react'
+// Taro 额外添加的 hooks 要从 '@tarojs/taro' 中引入
+import { useDidShow, useDidHide } from '@tarojs/taro'
+import { Provider } from 'react-redux'
+import { Substrate } from './components'
 import { store } from './store'
 
 import './app.scss'
 
-class App extends Component<PropsWithChildren> {
-  componentDidMount () {}
+function App (props) {
+  // 可以使用所有的 React Hooks
+  useEffect(() => {})
 
-  componentDidShow () {}
+  // 对应 onShow
+  useDidShow(() => {})
 
-  componentDidHide () {}
+  // 对应 onHide
+  useDidHide(() => {})
 
-  // 在 App 类中的 render() 函数没有实际作用
-  // 请勿修改此函数
-  render () {
-    return (
-      <Provider store={store}>
-        {this.props.children}
-      </Provider>
-    )
-  }
+  return (
+    // 在入口组件不会渲染任何内容，但我们可以在这里做类似于状态管理的事情
+    <Provider store={store}>
+      <Substrate></Substrate>
+      {/* props.children 是将要被渲染的页面 */}
+      {props.children}
+    </Provider>
+  )
 }
 
 export default App
