@@ -17,7 +17,7 @@ import {
   selectStatus,
 } from '@/reducers/counter';
 
-function Index () {
+function Index() {
   const count = useAppSelector(selectCount);
   const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
@@ -26,23 +26,33 @@ function Index () {
   const incrementValue = Number(incrementAmount) || 0;
 
   // 可以使用所有的 React Hooks
-  useEffect(() => {})
+  useEffect(() => { })
 
   // 对应 onReady
-  useReady(() => {})
+  useReady(() => { })
 
   // 对应 onShow
-  useDidShow(() => {})
+  useDidShow(() => { })
 
   // 对应 onHide
-  useDidHide(() => {})
+  useDidHide(() => { })
 
   // Taro 对所有小程序页面生命周期都实现了对应的自定义 React Hooks 进行支持
   // 详情可查阅：【Hooks】
-  usePullDownRefresh(() => {})
+  usePullDownRefresh(() => { })
 
   return (
     <View className='index'>
+      {/* accountPair={currentAccount}
+            setStatus={setStatus}
+            attrs={{
+              interxType,
+              palletRpc,
+              callable,
+              inputParams,
+              paramFields,
+            }} */}
+      {/* <TxGroupButton></TxGroupButton> */}
       <Button className='add_btn' onClick={() => dispatch(increment())}>+</Button>
       <View><Text>{count}{incrementAmount}{status}</Text></View>
       <Button className='dec_btn' onClick={() => dispatch(decrement())}> -</Button >

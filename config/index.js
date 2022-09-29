@@ -51,6 +51,7 @@ const config = {
     }
   },
   h5: {
+    esnextModules: [/@antmjs[\\/]vantui/],
     publicPath: "/",
     staticDirectory: "static",
     postcss: {

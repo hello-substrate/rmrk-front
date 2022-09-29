@@ -36,6 +36,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@antmjs/vantui": "^2.2.3",
     "@babel/runtime": "^7.7.7",
     "@polkadot/api": "^9.4.2",
     "@polkadot/extension-dapp": "^0.44.6",
@@ -56,13 +57,15 @@
     "@tarojs/shared": "3.5.6",
     "@tarojs/taro": "3.5.6",
     "@tarojs/taro-h5": "3.5.6",
+    "crypto-browserify": "^3.12.0",
     "path-browserify": "^1.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "taro-ui": "^2.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -88,6 +91,7 @@
     "@types/react": "^17.0.2"
   },
   "browser": {
-    "path": false
+    "path": false,
+    "crypto": false
   }
 }

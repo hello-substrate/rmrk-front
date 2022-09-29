@@ -65,7 +65,7 @@ const loadAccounts = (state: SubstrateState, dispatch) => {
 }
 
 
-const substrate = function Index() {
+const Index = function Index() {
   const substrateState = useAppSelector(selectSubstrate);
   const dispatch = useAppDispatch();
   connect_substrate(substrateState, dispatch);
@@ -92,4 +92,4 @@ const substrate = function Index() {
   )
 }
 
-export default substrate
+export default Index
