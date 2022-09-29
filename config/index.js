@@ -51,7 +51,7 @@ const config = {
     }
   },
   h5: {
-    esnextModules: [/@antmjs[\\/]vantui/],
+    esnextModules: ["@taroify"],
     publicPath: "/",
     staticDirectory: "static",
     postcss: {

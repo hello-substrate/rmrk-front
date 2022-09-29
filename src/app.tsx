@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 // Taro 额外添加的 hooks 要从 '@tarojs/taro' 中引入
 import { useDidShow, useDidHide } from '@tarojs/taro'
 import { Provider } from 'react-redux'
-import 'taro-ui/dist/style/index.scss'
 
 import { Substrate } from './components'
 import { store } from './store'

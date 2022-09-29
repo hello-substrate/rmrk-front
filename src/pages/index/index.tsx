@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Button, Text } from '@tarojs/components'
+import { Flex } from "@taroify/core"
 import {
   useReady,
   useDidShow,
@@ -16,6 +17,7 @@ import {
   selectCount,
   selectStatus,
 } from '@/reducers/counter';
+import {TxButton,TxButtonGroup} from '@/components/TxButton';
 
 function Index() {
   const count = useAppSelector(selectCount);
@@ -52,7 +54,13 @@ function Index() {
               inputParams,
               paramFields,
             }} */}
-      {/* <TxGroupButton></TxGroupButton> */}
+      <Flex justify='space-around'>
+        <Flex.Item span={6}>span: 6</Flex.Item>
+        <Flex.Item span={6}>span: 6</Flex.Item>
+        <Flex.Item span={6}>span: 6</Flex.Item>
+      </Flex>
+      <TxButton></TxButton>
+      <TxButtonGroup></TxButtonGroup>
       <Button className='add_btn' onClick={() => dispatch(increment())}>+</Button>
       <View><Text>{count}{incrementAmount}{status}</Text></View>
       <Button className='dec_btn' onClick={() => dispatch(decrement())}> -</Button >
