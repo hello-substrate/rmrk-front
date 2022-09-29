@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import rootReducer from "../reducers";
 import logger from "redux-logger";
+
+import rootReducer from "../reducers";
 
 let middlewares = [];
 if (process.env.NODE_ENV === 'development') {
