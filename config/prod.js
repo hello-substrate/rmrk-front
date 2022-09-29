@@ -4,7 +4,6 @@ module.exports = {
   },
   defineConstants: {
     PROVIDER_SOCKET: '"wss://dev-node.substrate.dev"',
-    DEVELOPMENT_KEYRING: false
   },
   mini: {},
   h5: {

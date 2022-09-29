@@ -1,8 +1,8 @@
+
 const config = {
-  // substrate
-  APP_NAME: "rmrk-front",
-  RPC: {},
-  // end substrate
+  // alias: {
+  //   "@": path.resolve(__dirname, "..", "src")
+  // },
   projectName: "rmrk-front",
   date: "2022-9-28",
   designWidth: 750,
@@ -14,7 +14,12 @@ const config = {
   sourceRoot: "src",
   outputRoot: "dist",
   plugins: [],
-  defineConstants: {},
+  defineConstants: {
+    APP_NAME: '"rmrk-front"',
+    DEVELOPMENT_KEYRING: process.env.NODE_ENV === '"development"',
+    RPC: JSON.stringify({})
+    // RPC: {}
+  },
   copy: {
     patterns: [],
     options: {}
@@ -64,9 +69,13 @@ const config = {
   }
 };
 
-module.exports = function (merge) {
-  if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+module.exports = function(merge) {
+  const path = require("path");
+  config.alias = {
+    "@": path.resolve(__dirname, "..", "src")
+  };
+  if (process.env.NODE_ENV === "development") {
+    return merge({}, config, require("./dev"));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require("./prod"));
+};

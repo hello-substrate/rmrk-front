@@ -7,7 +7,7 @@ import {
   usePullDownRefresh
 } from '@tarojs/taro'
 
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
 
 import {
   decrement,
@@ -15,8 +15,7 @@ import {
   incrementAsync,
   selectCount,
   selectStatus,
-} from '../../reducers/counter';
-import { set_current_account } from 'src/reducers/substrate';
+} from '@/reducers/counter';
 
 function Index () {
   const count = useAppSelector(selectCount);

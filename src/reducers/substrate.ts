@@ -3,11 +3,10 @@ import { RootState } from "src/store";
 import { Keyring } from "@polkadot/ui-keyring";
 import jsonrpc from "@polkadot/types/interfaces/jsonrpc";
 
-import config from "../../config";
-
 const parsedQuery: any = new URLSearchParams(window.location.search);
 const connectedSocket = parsedQuery.rpc || PROVIDER_SOCKET;
 console.log(`Connected socket: ${connectedSocket}`);
+
 const ModuleID = "substrate";
 export interface SubstrateState {
   api: any;
@@ -22,7 +21,7 @@ export interface SubstrateState {
 
 const initialState: SubstrateState = {
   socket: connectedSocket,
-  jsonrpc: { ...jsonrpc, ...config.RPC },
+  jsonrpc: { ...jsonrpc, ...RPC },
   keyring: null,
   keyringState: null,
   api: null,

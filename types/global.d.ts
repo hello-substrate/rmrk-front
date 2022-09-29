@@ -7,9 +7,14 @@ declare module '*.jpeg';
 declare module '*.svg';
 declare module '*.css';
 declare module '*.less';
-declare module '*.scss';
+declare module "*.scss";
 declare module '*.sass';
 declare module '*.styl';
+
+declare const APP_NAME: string;
+declare const RPC: any;
+declare const PROVIDER_SOCKET: string;
+declare const DEVELOPMENT_KEYRING: any;
 
 declare namespace NodeJS {
   interface ProcessEnv {

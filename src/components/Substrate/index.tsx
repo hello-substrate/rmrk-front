@@ -10,9 +10,8 @@ import {
   useDidHide,
   usePullDownRefresh
 } from '@tarojs/taro'
-import { selectSubstrate, connect_init, SubstrateState, connect, connect_success, connect_error, load_keyring, set_keyring, keyring_error, set_current_account } from '../../reducers/substrate';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import config from '../../../config'
+import { selectSubstrate, connect_init, SubstrateState, connect, connect_success, connect_error, load_keyring, set_keyring, keyring_error, set_current_account } from '@/reducers/substrate';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 const connect_substrate = (state: SubstrateState, dispatch) => {
   const { apiState, socket, jsonrpc } = state;
@@ -38,7 +37,7 @@ const loadAccounts = (state: SubstrateState, dispatch) => {
   const asyncLoadAccounts = async () => {
     dispatch(load_keyring())
     try {
-      await web3Enable(config.APP_NAME)
+      await web3Enable(APP_NAME)
       let allAccounts = await web3Accounts()
       allAccounts = allAccounts.map(({ address, meta }) => ({
         address,
@@ -75,9 +74,6 @@ const substrate = function Index() {
   function setCurrentAccount(acct) {
     dispatch(set_current_account(acct))
   }
-  // 可以使用所有的 React Hooks
-  useEffect(() => { })
-
   // 对应 onReady
   useReady(() => { })
 
