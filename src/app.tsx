@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import { Substrate } from './components'
 import { store } from './store'
 import './app.scss'
+import './common/css/index.scss'
 
 function App (props) {
   // 可以使用所有的 React Hooks

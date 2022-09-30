@@ -1,15 +1,64 @@
 import React, { useEffect, useState } from 'react'
-import { View } from '@tarojs/components'
-import { Flex, Swiper, Image } from '@taroify/core'
+import { View, Text } from '@tarojs/components'
+import { Flex, Cell, Loading, List, Swiper, Image } from '@taroify/core'
 import {
   useReady,
   useDidShow,
   useDidHide,
-  usePullDownRefresh
+  usePullDownRefresh,
+  usePageScroll
 } from '@tarojs/taro'
 
+import MCard from '@/components/MCard';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import './index.scss'
+
+function BasicList() {
+  const [hasMore, setHasMore] = useState(true)
+  const [list, setList] = useState<string[]>([])
+  const [loading, setLoading] = useState(false)
+  const [scrollTop, setScrollTop] = useState(0)
+
+  usePageScroll(({ scrollTop: aScrollTop }) => setScrollTop(aScrollTop))
+
+  return (
+    <List
+      loading={loading}
+      hasMore={hasMore}
+      scrollTop={scrollTop}
+      onLoad={() => {
+        setLoading(true)
+        setTimeout(() => {
+          for (let i = 0; i < 10; i++) {
+            const text = list.length + 1
+            list.push(text < 10 ? '0' + text : String(text))
+          }
+          setList([...list])
+          setHasMore(list.length < 40)
+          setLoading(false)
+        }, 1000)
+      }}
+    >
+      {
+        list.map((item) => (
+          <MCard key={item}>
+            <View className='m-rela'>
+              <Image
+                style={{ width: '100px', height: '100px' }}
+                src='https://img.yzcdn.cn/vant/cat.jpeg'
+              />
+              <Text className='m-abs-top-left'>{item}</Text>
+            </View>
+          </MCard>
+        ))
+      }
+      <List.Placeholder>
+        {loading && <Loading>加载中...</Loading>}
+        {!hasMore && '没有更多了'}
+      </List.Placeholder>
+    </List>
+  )
+}
 
 
 function Index() {
@@ -53,6 +102,8 @@ function Index() {
           <Image className='image' src='https://img01.yzcdn.cn/vant/apple-4.jpg' />
         </Swiper.Item>
       </Swiper>
+
+      <BasicList></BasicList>
     </View>
   )
 }

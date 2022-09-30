@@ -1,0 +1,28 @@
+/* 这里是你自己写的全局css样式 */
+@import "./mixin.scss";
+@import "./theme.scss";
+@import "./uview_color.scss";
+@import "./flex.scss";
+@import "./color.scss";
+@import "./common.scss";
+
+page {
+  height: 100%;
+  font-family: Monaco, Menlo, monospace, Courier !important;
+  background-color: #ededed !important;
+  color: $u-main-color;
+  font-size: 28px;
+}
+
+:root {
+  height: 100%;
+  font-family: Monaco, Menlo, monospace, Courier !important;
+  background-color: #ededed !important;
+  color: $u-main-color;
+  font-size: 28px;
+}
+
+.taro_page {
+  background-color: #ededed !important;
+
+}

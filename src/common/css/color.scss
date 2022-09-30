@@ -1,0 +1,58 @@
+$m-app-color: #57be6a;
+
+.m-color-logo {
+	color: $m-app-color;
+}
+
+.m-bg {
+	background-color: #ededed;
+}
+
+.m-err {
+	color: #fa3534;
+}
+
+.m-pri-color {
+	color: #2979ff;
+}
+
+.m-suc {
+	color: #19be6b;
+}
+
+.m-warn {
+	color: #ff9900;
+}
+
+.m-info {
+	color: #909399;
+}
+
+.m-bg-logo {
+	background-color: #57be6a;
+	color: #ffffff;
+}
+
+.m-bg-suc {
+	background-color: #19be6b;
+	color: #ffffff;
+}
+
+.m-bg-info {
+	background-color: #8f939c;
+	color: #ffffff;
+}
+
+.m-bg-white {
+	background-color: #ffffff;
+	color: $u-main-color;
+}
+
+// 页面背景颜色
+.u-bg-color {
+	background-color: $u-bg-color;
+}
+
+.m-tips-color {
+	color: $u-tips-color  !important;
+}

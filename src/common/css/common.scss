@@ -1,0 +1,196 @@
+.u-hide {
+	opacity: 0;
+}
+
+.m-shadow-sm {
+	box-shadow: 0 0 10px rgba($color: #d8d8d8, $alpha: 0.5);
+}
+
+.m-shadow {
+	box-shadow: 0 2px 16px 2px rgba($color: #a5a4a4, $alpha: 0.5);
+}
+
+.m-shadow-lg {
+	box-shadow: 0px 2px 20px 4px rgba($color: #a5a4a4, $alpha: 0.5);
+}
+
+.m-rela {
+	position: relative;
+}
+
+.m-abs-center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.m-abs-bottom-center {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.m-abs-top-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: auto;
+}
+
+.u-text-center {
+	text-align: center;
+}
+
+.u-text-right {
+	text-align: right;
+}
+
+.m-bold {
+	font-weight: bold;
+}
+
+// 省略号 不换行
+.u-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+// 定义内外边距，历遍1-80
+@for $i from 0 through 80 {
+
+	// 只要双数和能被5除尽的数
+	@if $i % 2==0 or $i % 5==0 {
+
+		// 得出：m-30
+		.m-#{$i} {
+			margin: $i + px !important;
+		}
+
+		// 得出：p-30
+		.p-#{$i} {
+			padding: $i + px !important;
+		}
+
+		@each $short,
+		$long in l left,
+		t top,
+		r right,
+		b bottom {
+
+			// 缩写版，结果如： u-m-l-30
+			// 定义外边距
+			.m#{$short}-#{$i} {
+				margin-#{$long}: $i + px !important;
+			}
+
+			// 定义内边距
+			.p#{$short}-#{$i} {
+				padding-#{$long}: $i + px !important;
+			}
+		}
+	}
+}
+
+// 定义上下，左右. 内外边距，历遍1-80
+@for $i from 0 through 80 {
+
+	// 只要双数和能被5除尽的数
+	@if $i % 2==0 or $i % 5==0 {
+
+		@each $short,
+		$long,
+		$long2 in x left right,
+		y top bottom {
+
+			// 缩写版，结果如： mx-10
+			// 定义外边距
+			.m#{$short}-#{$i} {
+				margin-#{$long}: $i + px !important;
+				margin-#{$long2}: $i + px !important;
+			}
+
+			// 定义内边距
+			.p#{$short}-#{$i} {
+				padding-#{$long}: $i + px !important;
+				padding-#{$long2}: $i + px !important;
+			}
+		}
+	}
+}
+
+// 定义边框，历遍1-10
+@for $i from 0 through 10 {
+
+	// 得出：b-10
+	.b-#{$i} {
+		border: $i + px + " " +solid #606266;
+	}
+
+	@each $short,
+	$long in l left,
+	t top,
+	ri right,
+	b bottom {
+
+		// 定义外边距
+		.b#{$short}-#{$i} {
+			border-#{$long}: $i + px + " " + solid #606266;
+		}
+	}
+}
+
+// 定义圆角，历遍1-50
+@for $i from 0 through 50 {
+
+	// 只要双数和能被5除尽的数
+	@if $i % 2==0 or $i % 5==0 {
+		.br-#{$i} {
+			border-radius: $i + px !important;
+		}
+
+		.brp-#{50 - $i} {
+			border-radius: 50% - $i;
+		}
+
+		.brt-#{$i} {
+			border-top-left-radius: $i + px !important;
+			border-top-right-radius: $i + px !important;
+		}
+
+		.brb-#{$i} {
+			border-bottom-left-radius: $i + px !important;
+			border-bottom-right-radius: $i + px !important;
+		}
+	}
+}
+
+// 定义宽度，历遍20-140
+@for $i from 20 through 140 {
+
+	// 只要双数和能被5除尽的数
+	@if $i % 2==0 or $i % 5==0 {
+		.wh-#{$i} {
+			width: $i + px;
+			height: $i + px;
+		}
+	}
+}
+
+// 定义字体单位，历遍12-100
+@for $i from 12 through 100 {
+
+	// 只要双数和能被5除尽的数
+	@if $i % 2==0 or $i % 5==0 {
+		.m-f-#{$i} {
+			font-size: $i + px;
+		}
+	}
+}
