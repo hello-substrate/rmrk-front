@@ -12,6 +12,7 @@ page {
   background-color: #ededed !important;
   color: $u-main-color;
   font-size: 28px;
+  --navbar-z-index: 999;
 }
 
 :root {
@@ -19,8 +20,9 @@ page {
   font-family: Monaco, Menlo, monospace, Courier !important;
   background-color: #ededed !important;
   color: $u-main-color;
-  font-size: 28px;
+  --navbar-z-index: 999;
 }
+
 
 .taro_page {
   background-color: #ededed !important;
