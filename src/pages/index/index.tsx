@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View, Button, Text } from '@tarojs/components'
-import { Flex } from "@taroify/core"
+import { View } from '@tarojs/components'
+import { Flex, Swiper, Image } from '@taroify/core'
 import {
   useReady,
   useDidShow,
@@ -9,20 +9,13 @@ import {
 } from '@tarojs/taro'
 
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import './index.scss'
 
-import {
-  decrement,
-  increment,
-  incrementAsync,
-  selectCount,
-  selectStatus,
-} from '@/reducers/counter';
-import {TxButton,TxButtonGroup} from '@/components/TxButton';
 
 function Index() {
-  const count = useAppSelector(selectCount);
-  const status = useAppSelector(selectStatus);
-  const dispatch = useAppDispatch();
+  // const count = useAppSelector(selectCount);
+  // const status = useAppSelector(selectStatus);
+  // const dispatch = useAppDispatch();
 
   const [incrementAmount, setIncrementAmount] = useState('2');
   const incrementValue = Number(incrementAmount) || 0;
@@ -45,27 +38,21 @@ function Index() {
 
   return (
     <View className='index'>
-      {/* accountPair={currentAccount}
-            setStatus={setStatus}
-            attrs={{
-              interxType,
-              palletRpc,
-              callable,
-              inputParams,
-              paramFields,
-            }} */}
-      <Flex justify='space-around'>
-        <Flex.Item span={6}>span: 6</Flex.Item>
-        <Flex.Item span={6}>span: 6</Flex.Item>
-        <Flex.Item span={6}>span: 6</Flex.Item>
-      </Flex>
-      <TxButton></TxButton>
-      <TxButtonGroup></TxButtonGroup>
-      <Button className='add_btn' onClick={() => dispatch(increment())}>+</Button>
-      <View><Text>{count}{incrementAmount}{status}</Text></View>
-      <Button className='dec_btn' onClick={() => dispatch(decrement())}> -</Button >
-      <Button className='dec_btn' onClick={() => dispatch(incrementAsync(incrementValue))}>async</Button>
-      <View><Text>Hello, World</Text></View>
+      <Swiper className='image-swiper' lazyRender autoplay={4000}>
+        <Swiper.Indicator />
+        <Swiper.Item>
+          <Image className='image' src='https://img01.yzcdn.cn/vant/apple-1.jpg' />
+        </Swiper.Item>
+        <Swiper.Item>
+          <Image className='image' src='https://img01.yzcdn.cn/vant/apple-2.jpg' />
+        </Swiper.Item>
+        <Swiper.Item>
+          <Image className='image' src='https://img01.yzcdn.cn/vant/apple-3.jpg' />
+        </Swiper.Item>
+        <Swiper.Item>
+          <Image className='image' src='https://img01.yzcdn.cn/vant/apple-4.jpg' />
+        </Swiper.Item>
+      </Swiper>
     </View>
   )
 }
