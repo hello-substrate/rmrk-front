@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { View } from '@tarojs/components'
-import { ApiPromise, WsProvider } from '@polkadot/api'
-import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
-import { keyring } from '@polkadot/ui-keyring'
+import { ApiPromise, WsProvider, Keyring } from '@polkadot/api'
 
 import {
   useReady,
@@ -14,54 +12,31 @@ import { selectSubstrate, connect_init, SubstrateState, connect, connect_success
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 const connect_substrate = (state: SubstrateState, dispatch) => {
-  const { apiState, socket, jsonrpc } = state;
+  const { apiState, socket } = state;
   // We only want this function to be performed once
   if (apiState) return
+
+  if (isdebug) {
+    console.log(`Connected socket: ${socket}`);
+  }
+
   dispatch(connect_init());
   const provider = new WsProvider(socket)
-  const _api = new ApiPromise({ provider, rpc: jsonrpc })
+  const api = new ApiPromise({ provider })
   // Set listeners for disconnection and reconnection event.
-  _api.on('connected', () => {
-    dispatch(connect(_api))
+  api.on('connected', () => {
+    dispatch(connect(api))
     // `ready` event is not emitted upon reconnection and is checked explicitly here.
-    _api.isReady.then(__api => dispatch(connect_success()))
+    api.isReady.then(_api => {
+      dispatch(connect_success());
+      console.log('Connected successfully', isdebug)
+      if (isdebug) {
+        console.log(api.genesisHash.toHex());
+      }
+    })
   })
-  _api.on('ready', () => dispatch(connect_success()))
-  _api.on('error', err => dispatch(connect_error(err)))
-}
-
-///
-// Loading accounts from dev and polkadot-js extension
-let loadAccts = false;
-const loadAccounts = (state: SubstrateState, dispatch) => {
-  const asyncLoadAccounts = async () => {
-    dispatch(load_keyring())
-    try {
-      await web3Enable(APP_NAME)
-      let allAccounts = await web3Accounts()
-      allAccounts = allAccounts.map(({ address, meta }) => ({
-        address,
-        meta: { ...meta, name: `${meta.name} (${meta.source})` },
-      }))
-      keyring.loadAll(
-        { isDevelopment: DEVELOPMENT_KEYRING },
-        allAccounts
-      )
-      dispatch(set_keyring(keyring))
-    } catch (e) {
-      console.error(e)
-      dispatch(keyring_error())
-    }
-  }
-  const { keyringState } = state
-  // If `keyringState` is not null `asyncLoadAccounts` is running.
-  if (keyringState) return
-  // If `loadAccts` is true, the `asyncLoadAccounts` has been run once.
-  if (loadAccts) return dispatch(dispatch(set_keyring(keyring)))
-
-  // This is the heavy duty work
-  loadAccts = true
-  asyncLoadAccounts()
+  api.on('ready', () => dispatch(connect_success()))
+  api.on('error', err => dispatch(connect_error(err)))
 }
 
 
@@ -69,11 +44,7 @@ const Index = function Index() {
   const substrateState = useAppSelector(selectSubstrate);
   const dispatch = useAppDispatch();
   connect_substrate(substrateState, dispatch);
-  loadAccounts(substrateState, dispatch);
 
-  function setCurrentAccount(acct) {
-    dispatch(set_current_account(acct))
-  }
   // 对应 onReady
   useReady(() => { })
 

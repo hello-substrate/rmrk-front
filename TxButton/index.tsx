@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { View } from '@tarojs/components';
 import { selectSubstrate } from '@/reducers/substrate';
 import { useAppSelector } from '@/store/hooks';
-import { web3FromSource } from '@polkadot/extension-dapp';
 
 import utils from './utils';
 
@@ -58,9 +57,6 @@ const TxButton = function TxButton({
     let fromAcct;
     // signer is from Polkadot-js browser extension
     if (isInjected) {
-      const injected = await web3FromSource(source);
-      fromAcct = address;
-      api.setSigner(injected.signer);
     } else {
       fromAcct = accountPair;
     }

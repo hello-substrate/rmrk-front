@@ -5,7 +5,6 @@ import jsonrpc from "@polkadot/types/interfaces/jsonrpc";
 
 const parsedQuery: any = new URLSearchParams(window.location.search);
 const connectedSocket = parsedQuery.rpc || PROVIDER_SOCKET;
-console.log(`Connected socket: ${connectedSocket}`);
 
 const ModuleID = "substrate";
 export interface SubstrateState {

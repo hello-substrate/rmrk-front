@@ -1,8 +1,4 @@
-
 const config = {
-  // alias: {
-  //   "@": path.resolve(__dirname, "..", "src")
-  // },
   projectName: "rmrk-front",
   date: "2022-9-28",
   designWidth: 750,
@@ -16,9 +12,7 @@ const config = {
   plugins: [],
   defineConstants: {
     APP_NAME: '"rmrk-front"',
-    DEVELOPMENT_KEYRING: process.env.NODE_ENV === '"development"',
     RPC: JSON.stringify({})
-    // RPC: {}
   },
   copy: {
     patterns: [],
@@ -75,6 +69,9 @@ module.exports = function(merge) {
   config.alias = {
     "@": path.resolve(__dirname, "..", "src")
   };
+  config.defineConstants.isdebug = process.env.NODE_ENV === "development";
+  config.defineConstants.DEVELOPMENT_KEYRING =
+    process.env.NODE_ENV === "development";
   if (process.env.NODE_ENV === "development") {
     return merge({}, config, require("./dev"));
   }
